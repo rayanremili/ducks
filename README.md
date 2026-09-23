@@ -1,57 +1,53 @@
-Titre: Jeu de Tir aux Canards
-Auteurs: Rayan REMILI (12510125) et Ahcene ZOUAGUI (12504142)
+Title: Duck Shooting Game
+Authors: Rayan REMILI and Ahcene ZOUAGUI
 
-Description du programme:
-Jeu de tir en mode texte dans le terminal. Un canon se déplace horizontalement
-en bas de l'écran. Des cibles traversent l'écran de gauche à droite ou de
-droite à gauche. Le joueur tire des fléchettes pour les abattre.
+Program Description:
+A text-based shooting game played in the terminal. A cannon moves horizontally
+at the bottom of the screen. Targets move across the screen from left to right
+or from right to left. The player shoots darts to destroy them.
 
-Partie A (niveau 1) :
-Les cibles sont affichées en ">>>" ou "<<<" selon leur direction de déplacement.
-Le joueur tire des fléchettes "^" avec ESPACE. Un délai de rechargement de 8
-itérations empêche de tirer en continu. La victoire est atteinte à 10 cibles
-abattues.
+Part A (Level 1):
+Targets are displayed as ">>>" or "<<<" depending on their movement direction.
+The player shoots "^" darts using the SPACE key. A reload delay of 8 iterations
+prevents continuous shooting. Victory is achieved after destroying 10 targets.
 
-Partie B (niveau 2+) - les cibles ripostent :
-En plus du jeu de base, les cibles tirent des bombes "v" vers le bas en
-direction du canon. Le joueur dispose de 3 vies, affichées en haut à gauche
-sous forme de coeurs. Chaque bombe qui touche le canon coûte une vie. La partie
-se termine par une défaite si toutes les vies sont perdues.
+Part B (Level 2+) – Targets Fight Back:
+In addition to the basic gameplay, the targets shoot "v" bombs downward toward
+the cannon. The player has 3 lives, displayed in the top-left corner as hearts.
+Each bomb that hits the cannon costs one life. The game ends in defeat if all
+lives are lost.
 
-Installation: Utiliser la commande make pour utiliser le Makefile
-Dépendance: libncurses (sudo apt-get install libncurses5-dev libncursesw5-dev)
+Installation: Use the make command to build the project using the Makefile.
+Dependency: libncurses (sudo apt-get install libncurses5-dev libncursesw5-dev)
 
-Usage: ./main_jeu <largeur> <hauteur> <niveau de difficulté>
-  <largeur>  largeur de l'écran de jeu (au moins 30)
-  <hauteur>  hauteur de l'écran de jeu (au moins 20)
-  <niveau>   1 = Partie A, 2+ = Partie B (plus le niveau est élevé, plus
-             les cibles sont nombreuses et tirent vite)
+Usage: ./main_jeu <width> <height> <difficulty level> <width>   width of the game screen (at least 30) <height>  height of the game screen (at least 20) <level>   1 = Part A, 2+ = Part B (the higher the level, the more targets
+there are and the faster they shoot)
 
-Exemples:
-  ./main_jeu 80 40 1   -> Partie A
-  ./main_jeu 80 40 2   -> Partie B
-  ./main_jeu 80 40 3   -> Partie B niveau difficile
+Examples:
+./main_jeu 80 40 1   -> Part A
+./main_jeu 80 40 2   -> Part B
+./main_jeu 80 40 3   -> Part B, hard difficulty
 
-Important: pour jouer sur un grand écran (200 100 par ex), agrandir la fenêtre
-du terminal et réduire la police (CTRL-)
+Important: To play on a large screen (for example, 200 100), enlarge the
+terminal window and reduce the font size (CTRL-).
 
-Contrôles:
-  Flèche gauche  : déplacer le canon à gauche
-  Flèche droite  : déplacer le canon à droite
-  ESPACE         : tirer (délai de rechargement entre chaque tir)
-  ESC            : quitter le jeu
+Controls:
+Left arrow   : move the cannon to the left
+Right arrow  : move the cannon to the right
+SPACE        : shoot (reload delay between each shot)
+ESC          : quit the game
 
-Fichiers:
-  Affichage.h / Affichage.c  : gestion de la grille d'affichage (fourni)
-  Canon.h / Canon.c          : le canon du joueur (fourni)
-  Flechette.h / Flechette.c  : liste chainée de fléchettes + cooldown (Ex. 1)
-  Canard.h / Canard.c        : liste chainée de cibles (Ex. 2)
-  Bombe.h / Bombe.c          : liste chainée de bombes ennemies (Partie B)
-  main_jeu.c                 : boucle événementielle, collisions, score, vies
+Files:
+Affichage.h / Affichage.c  : display grid management (provided)
+Canon.h / Canon.c          : player cannon (provided)
+Flechette.h / Flechette.c  : linked list of darts + cooldown (Ex. 1)
+Canard.h / Canard.c        : linked list of targets (Ex. 2)
+Bombe.h / Bombe.c          : linked list of enemy bombs (Part B)
+main_jeu.c                 : event loop, collisions, score, lives
 
-Fin du jeu: touche ESC, victoire (10 cibles abattues) ou défaite (Partie B)
+End of the Game: ESC key, victory (10 targets destroyed), or defeat (Part B).
 
-Difficultés rencontrées:
-Le sens des coordonnées (x=ligne, y=colonne) a causé un bug dans la détection
-de collision entre fléchettes et cibles, corrigé en vérifiant soigneusement
-les champs x/y de chaque struct.
+Difficulties Encountered:
+The coordinate system (x = row, y = column) caused a bug in collision detection
+between darts and targets. This was fixed by carefully checking the x/y fields
+of each struct.
